@@ -21,8 +21,11 @@ for c in contours:
 	M = cv2.moments(c)
 
 	# Get the x, y co-ordinates of center
-	cx = int(M['m10'] / M['m00'])
-	cy = int(M['m01'] / M['m00'])
+	if M['m00'] != 0:
+	    cx = int(M['m10'] / M['m00'])
+	    cy = int(M['m01'] / M['m00'])
+	else:
+	    cx, cy = 0, 0     
 
 	cv2.circle(image, (cx, cy), 5, (255,255,255), -1)
 	cv2.putText(image, "Centroid", (cx-25, cy-25), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.5, (0, 255, 0))
