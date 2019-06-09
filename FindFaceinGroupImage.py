@@ -6,12 +6,13 @@ import cv2
 import numpy as np 
 
 image = cv2.imread('images/GroupPic.jpg')
-cv2.imshow('Original Image', image)
+cv2.imshow('Original Source Image', image)
 
 #Convert to Gray scale
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 template = cv2.imread('images/friend.jpg', 0)
+cv2.imshow('Template Image', template)
 Height, Width = template.shape[:2]
 
 result = cv2.matchTemplate(gray_image, template, cv2.TM_CCOEFF)
